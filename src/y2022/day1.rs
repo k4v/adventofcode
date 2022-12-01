@@ -1,4 +1,4 @@
-use std::{cmp::max, path::Path, collections::BinaryHeap};
+use std::{cmp::max, collections::BinaryHeap, path::Path};
 
 use crate::utils::read_lines;
 
@@ -54,5 +54,7 @@ where
         return Err("Error reading input from input");
     }
 
-    return Ok(elf_calories.pop().unwrap_or(-1) + elf_calories.pop().unwrap_or(-1) + elf_calories.pop().unwrap_or(-1));
+    return Ok(elf_calories.pop().unwrap_or(-1)
+        + elf_calories.pop().unwrap_or(-1)
+        + elf_calories.pop().unwrap_or(-1));
 }
