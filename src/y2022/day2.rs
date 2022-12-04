@@ -1,6 +1,6 @@
 use std::path::Path;
 
-use crate::utils::read_lines;
+use crate::utils::{read_lines, convert_char_to_u8};
 
 const SCORE_MULTIPLIER: u8 = 3;
 
@@ -72,10 +72,6 @@ impl RpsMove {
     }
 }
 
-fn convert_to_int(of_c: char, base: char) -> u8 {
-    (of_c as u8) - (base as u8)
-}
-
 fn get_score_from_moves(my_move: &RpsMove, opp_move: &RpsMove) -> u8 {
     let result: RpsResult = match my_move.cmp(opp_move) {
         std::cmp::Ordering::Equal => RpsResult::Draw,
@@ -97,10 +93,10 @@ where
             if let Ok(input_line) = line {
                 let moves = input_line.split_ascii_whitespace().collect::<Vec<&str>>();
                 let opp_move =
-                    RpsMove::from(1 + convert_to_int(moves[0].chars().nth(0).unwrap(), 'A'))
+                    RpsMove::from(1 + convert_char_to_u8(moves[0].chars().nth(0).unwrap(), 'A'))
                         .unwrap();
                 let my_move =
-                    RpsMove::from(1 + convert_to_int(moves[1].chars().nth(0).unwrap(), 'X'))
+                    RpsMove::from(1 + convert_char_to_u8(moves[1].chars().nth(0).unwrap(), 'X'))
                         .unwrap();
 
                 let score = get_score_from_moves(&my_move, &opp_move);
@@ -136,10 +132,10 @@ where
             if let Ok(input_line) = line {
                 let moves = input_line.split_ascii_whitespace().collect::<Vec<&str>>();
                 let opp_move =
-                    RpsMove::from(1 + convert_to_int(moves[0].chars().nth(0).unwrap(), 'A'))
+                    RpsMove::from(1 + convert_char_to_u8(moves[0].chars().nth(0).unwrap(), 'A'))
                         .unwrap();
                 let result =
-                    RpsResult::from(convert_to_int(moves[1].chars().nth(0).unwrap(), 'X')).unwrap();
+                    RpsResult::from(convert_char_to_u8(moves[1].chars().nth(0).unwrap(), 'X')).unwrap();
                 let my_move = get_move_by_result(&opp_move, &result);
 
                 let score = get_score_from_moves(&my_move, &opp_move);
@@ -157,17 +153,17 @@ where
 mod day2_tests {
     use crate::y2022::day2::RpsMove;
 
-    use super::{convert_to_int, get_score_from_moves};
+    use super::{convert_char_to_u8, get_score_from_moves};
 
     #[test]
     fn test_convert_to_int() {
-        assert_eq!(convert_to_int('A', 'A'), 1);
-        assert_eq!(convert_to_int('B', 'A'), 2);
-        assert_eq!(convert_to_int('C', 'A'), 3);
+        assert_eq!(convert_char_to_u8('A', 'A'), 1);
+        assert_eq!(convert_char_to_u8('B', 'A'), 2);
+        assert_eq!(convert_char_to_u8('C', 'A'), 3);
 
-        assert_eq!(convert_to_int('X', 'X'), 1);
-        assert_eq!(convert_to_int('Y', 'X'), 2);
-        assert_eq!(convert_to_int('Z', 'X'), 3);
+        assert_eq!(convert_char_to_u8('X', 'X'), 1);
+        assert_eq!(convert_char_to_u8('Y', 'X'), 2);
+        assert_eq!(convert_char_to_u8('Z', 'X'), 3);
     }
 
     #[test]
