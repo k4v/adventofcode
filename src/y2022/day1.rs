@@ -22,7 +22,7 @@ where
             }
         }
     } else {
-        return Err("Error reading input from input");
+        return Err("Error reading input from file");
     }
 
     return Ok(max_calories);
