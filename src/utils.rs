@@ -8,3 +8,7 @@ where
     let file = File::open(filename)?;
     Ok(io::BufReader::new(file).lines())
 }
+
+pub fn convert_char_to_u8(of_c: char, base: char) -> u8 {
+    (of_c as u8) - (base as u8)
+}
