@@ -26,4 +26,8 @@ fn main() {
     // Day 3
     print_result(2022, 3, 1, y2022::day3::get_duplicate_items_priority_total("input/2022_d3.input"));
     print_result(2022, 3, 2, y2022::day3::get_badge_priority_total("input/2022_d3.input"));
+
+    // Day 4
+    print_result(2022, 4, 1, y2022::day4::get_fully_contained_pairs("input/2022_d4.input"));
+    print_result(2022, 4, 2, y2022::day4::get_total_overlapping_pairs("input/2022_d4.input"));
 }
