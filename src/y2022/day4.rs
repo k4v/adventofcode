@@ -1,7 +1,9 @@
-use std::{path::Path, cmp::{min, max}};
+use std::{
+    cmp::{max, min},
+    path::Path,
+};
 
 use crate::utils::read_lines;
-
 
 fn is_range_contained(first_range: (u8, u8), second_range: (u8, u8)) -> bool {
     let combined_range = (min(first_range.0, second_range.0), max(first_range.1, second_range.1));
@@ -26,7 +28,8 @@ where
 
                 for range_str in input_line.split(",") {
                     let range_str_pair = range_str.split("-").collect::<Vec<&str>>();
-                    let range: (u8, u8) = (range_str_pair[0].parse().unwrap(), range_str_pair[1].parse().unwrap());
+                    let range: (u8, u8) =
+                        (range_str_pair[0].parse().unwrap(), range_str_pair[1].parse().unwrap());
 
                     ranges.push(range);
                 }
@@ -56,7 +59,8 @@ where
 
                 for range_str in input_line.split(",") {
                     let range_str_pair = range_str.split("-").collect::<Vec<&str>>();
-                    let range: (u8, u8) = (range_str_pair[0].parse().unwrap(), range_str_pair[1].parse().unwrap());
+                    let range: (u8, u8) =
+                        (range_str_pair[0].parse().unwrap(), range_str_pair[1].parse().unwrap());
 
                     ranges.push(range);
                 }
@@ -75,8 +79,7 @@ where
 
 #[cfg(test)]
 mod day4_tests {
-    use crate::y2022::day4::{is_range_contained, do_ranges_overlap};
-
+    use crate::y2022::day4::{do_ranges_overlap, is_range_contained};
 
     #[test]
     fn test_is_range_contained() {

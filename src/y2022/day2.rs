@@ -1,6 +1,6 @@
 use std::path::Path;
 
-use crate::utils::{read_lines, decode_char_to_u8};
+use crate::utils::{decode_char_to_u8, read_lines};
 
 const SCORE_MULTIPLIER: u8 = 3;
 
@@ -135,7 +135,8 @@ where
                     RpsMove::from(1 + decode_char_to_u8(moves[0].chars().nth(0).unwrap(), 'A'))
                         .unwrap();
                 let result =
-                    RpsResult::from(decode_char_to_u8(moves[1].chars().nth(0).unwrap(), 'X')).unwrap();
+                    RpsResult::from(decode_char_to_u8(moves[1].chars().nth(0).unwrap(), 'X'))
+                        .unwrap();
                 let my_move = get_move_by_result(&opp_move, &result);
 
                 let score = get_score_from_moves(&my_move, &opp_move);
