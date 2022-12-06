@@ -24,12 +24,7 @@ fn main() {
     print_result(2022, 2, 2, y2022::day2::get_rps_score_by_result("input/2022_d2.input"));
 
     // Day 3
-    print_result(
-        2022,
-        3,
-        1,
-        y2022::day3::get_duplicate_items_priority_total("input/2022_d3.input"),
-    );
+    print_result(2022, 3, 1, y2022::day3::get_dup_items_total_priority("input/2022_d3.input"));
     print_result(2022, 3, 2, y2022::day3::get_badge_priority_total("input/2022_d3.input"));
 
     // Day 4
@@ -39,4 +34,8 @@ fn main() {
     // Day 5
     print_result(2022, 5, 1, y2022::day5::get_crates_on_top_9000("input/2022_d5.input"));
     print_result(2022, 5, 2, y2022::day5::get_crates_on_top_9001("input/2022_d5.input"));
+
+    // Day 6
+    print_result(2022, 6, 1, y2022::day6::get_start_marker_offset("input/2022_d6.input"));
+    print_result(2022, 6, 2, y2022::day6::get_start_message_offset("input/2022_d6.input"));
 }

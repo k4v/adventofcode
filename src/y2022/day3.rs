@@ -2,7 +2,7 @@ use std::{collections::HashSet, path::Path};
 
 use crate::utils::{decode_char_to_u8, read_lines};
 
-pub fn get_duplicate_items_priority_total<F>(input_filepath: F) -> Result<u64, &'static str>
+pub fn get_dup_items_total_priority<F>(input_filepath: F) -> Result<u64, &'static str>
 where
     F: AsRef<Path>,
 {
