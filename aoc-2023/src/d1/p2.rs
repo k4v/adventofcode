@@ -81,7 +81,7 @@ pub(crate) fn run(input_file: &str) -> u32 {
 
     let mut line_idx = 0;
 
-    return utils::read_file(input_file).map(|line| {
+    utils::read_file(input_file).map(|line| {
         if let Ok(line) = line {
             // Find first number (from the left) in the given line
             let (first_num, first_num_idx) = find_number_in_line(&line, 0).unwrap_or_else(|| panic!("Could not find a number in string: {}", line));
@@ -90,15 +90,11 @@ pub(crate) fn run(input_file: &str) -> u32 {
             let mut last_num = first_num;
             let mut last_idx = first_num_idx;
 
-            loop {
-                if let Some((next_num, next_idx)) = find_number_in_line(&line, last_idx + 1) {
-                    last_num = next_num;
-                    last_idx = next_idx;
-                } else {
-                    break;
-                }
+            while let Some((next_num, next_idx)) = find_number_in_line(&line, last_idx + 1) {
+                last_num = next_num;
+                last_idx = next_idx;
             }
-            
+
             // Build number from retrieved numbers
             let found_num = (10 * first_num) + last_num;
             line_idx += 1;
@@ -107,5 +103,5 @@ pub(crate) fn run(input_file: &str) -> u32 {
         }
         
         0
-    }).sum::<u32>();
+    }).sum::<u32>()
 }
